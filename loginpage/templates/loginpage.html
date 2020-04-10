@@ -2,28 +2,49 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>login</title>
-    <style>
-      body
-        {
-          background-color:lightgrey;
-        }
-    </style>
+      <style>
+          body {
+            background-image: url("https://4.bp.blogspot.com/-cKfxHZBZKNo/WIQaN1S0CwI/AAAAAAAAFAc/8CVg_TVmG6ES8uVepCpzzYmwKyxvmyR7gCLcB/s1600/kvs-logo-with-bg.png");
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+      </style>
   </head>
   <body>
-  <div style="background-color:white ; padding:80px ; display:block ; margin:8% ; float:center	;align-content: center;position:absolute
-">
-      <form action="data" method="POST">
-          {% csrf_token %}
-          <div style = "color:black;">
-            <pre><b>UserName     </pre><input type="text" name="UserName" placeholder="Enter the username" style="padding: 9px 32px;border-radius: 12px; color:white;background-color:green;font-size:15px"><br><br>
-            <pre><b>Password     </pre><input type="password" name="Password" placeholder="Enter the password"   style="padding: 9px 32px;border-radius: 12px;color:white;background-color:green;font-size:15px;"
-><br><br><br><br>
-
-          <input type="submit" name="Login" value="Login" style="color:white;background-color:blue;padding: 15px 32px;float:left;border-radius: 12px;">
+  <div class="container">
+      <div class="col-lg-3"></div>
+          <div class="col-lg-6" style="margin: 25% 0 0 0">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">Results</div>
+                  <div class="panel-body">
+                      <form action="data" method="POST">
+                          {% csrf_token %}
+                          <div class="form-group">
+                              {% if login_fail %}
+                              <div class="alert alert-danger">
+                                  <center><strong>Invalid</strong> Username or password</center>
+                              </div>
+                              {% endif %}
+                              <label for="UserName">Username:</label>
+                              <input type="text" class="form-control" id="UserName" placeholder="Enter Username" name="UserName" required>
+                                      <br>
+                                  </div>
+                          <div class="form-group">
+                              <label for="Password">Password:</label>
+                                        <input type="password" class="form-control" id="Password" placeholder="Enter password" name="Password" required>
+                                      <br>
+                                  </div>
+                          <center><button type="submit" class="btn btn-success" name="Login">Submit</button></center>
+                      </form>
+                  </div>
+              </div>
           </div>
-      </form>
-    </div>
+          <div class="col-lg-3"></div>
+      </div>
   </body>
 </html>
