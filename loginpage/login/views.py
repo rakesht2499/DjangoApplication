@@ -1,3 +1,5 @@
+import csv
+
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from login.models import log
@@ -12,12 +14,12 @@ def data(request):
     user = str(request.POST['UserName'])
     password = str(request.POST['Password'])
     try:
-        t = log.objects.get(studentcode = user)
+        t = log.objects.get(studentcode =user)
         if(str(t.dob) == password):
             return render(request,'loggedinpage.html',{'code': t.studentcode , 'name': t.studentname ,
                                                        'admin': t.adminno , 'class' : t.classname ,
                                                        'section': t.section , 'result' : t.result,
-                                                       'pass': t.result == "PASS"})
+                                                       'pass': t.result == "PASS" or t.result == "PASSED"})
         else:
             return render(request, 'loginpage.html', {'login_fail': True})
     except:
